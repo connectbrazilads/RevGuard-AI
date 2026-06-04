@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+@theme {
+  /* ──── Color Palette (Stripe/Linear inspired) ──── */
+  --color-primary-50: oklch(0.97 0.02 275);
+  --color-primary-100: oklch(0.93 0.04 275);
+  --color-primary-200: oklch(0.86 0.08 275);
+  --color-primary-300: oklch(0.76 0.12 275);
+  --color-primary-400: oklch(0.65 0.18 275);
+  --color-primary-500: oklch(0.55 0.22 275);
+  --color-primary-600: oklch(0.47 0.22 275);
+  --color-primary-700: oklch(0.40 0.20 275);
+  --color-primary-800: oklch(0.33 0.16 275);
+  --color-primary-900: oklch(0.27 0.12 275);
+
+  --color-accent-400: oklch(0.75 0.16 220);
+  --color-accent-500: oklch(0.65 0.20 220);
+  --color-accent-600: oklch(0.55 0.20 220);
+
+  --color-success-400: oklch(0.78 0.16 155);
+  --color-success-500: oklch(0.68 0.19 155);
+  --color-success-600: oklch(0.58 0.18 155);
+
+  --color-warning-400: oklch(0.82 0.14 80);
+  --color-warning-500: oklch(0.75 0.16 80);
+  --color-warning-600: oklch(0.65 0.16 80);
+
+  --color-danger-400: oklch(0.72 0.18 20);
+  --color-danger-500: oklch(0.62 0.22 20);
+  --color-danger-600: oklch(0.52 0.20 20);
+
+  /* ──── Surface / Background (Dark mode first) ──── */
+  --color-surface-950: oklch(0.13 0.02 275);
+  --color-surface-900: oklch(0.16 0.02 275);
+  --color-surface-800: oklch(0.20 0.02 275);
+  --color-surface-700: oklch(0.25 0.02 275);
+  --color-surface-600: oklch(0.30 0.02 275);
+  --color-surface-500: oklch(0.40 0.02 275);
+  --color-surface-400: oklch(0.50 0.02 275);
+  --color-surface-300: oklch(0.60 0.01 275);
+  --color-surface-200: oklch(0.75 0.01 275);
+  --color-surface-100: oklch(0.88 0.01 275);
+  --color-surface-50: oklch(0.96 0.005 275);
+
+  /* ──── Typography ──── */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ──── Animations ──── */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.5s ease-out;
+  --animate-slide-in-left: slide-in-left 0.3s ease-out;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-count-up: count-up 1s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+/* ──── Keyframes ──── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px oklch(0.55 0.22 275 / 0.3); }
+  50% { box-shadow: 0 0 40px oklch(0.55 0.22 275 / 0.5); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ──── Base Styles (Dark = default) ──── */
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-surface-950);
+  color: var(--color-surface-100);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ──── Scrollbar ──── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-600);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-500);
+}
+
+/* ──── Glassmorphism Utilities ──── */
+.glass {
+  background: oklch(0.16 0.02 275 / 0.6);
+  backdrop-filter: blur(16px) saturate(1.8);
+  border: 1px solid oklch(1 0 0 / 0.06);
+}
+
+.glass-light {
+  background: oklch(0.20 0.02 275 / 0.4);
+  backdrop-filter: blur(12px) saturate(1.5);
+  border: 1px solid oklch(1 0 0 / 0.08);
+}
+
+.glass-strong {
+  background: oklch(0.16 0.02 275 / 0.8);
+  backdrop-filter: blur(24px) saturate(2);
+  border: 1px solid oklch(1 0 0 / 0.1);
+}
+
+/* ──── Gradient Utilities ──── */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-400));
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-400));
+}
+
+.gradient-danger {
+  background: linear-gradient(135deg, var(--color-danger-600), var(--color-danger-400));
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, var(--color-success-600), var(--color-success-400));
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, var(--color-warning-600), var(--color-warning-400));
+}
+
+.gradient-mesh {
+  background: 
+    radial-gradient(at 20% 20%, oklch(0.55 0.22 275 / 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, oklch(0.65 0.20 220 / 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, oklch(0.68 0.19 155 / 0.05) 0px, transparent 50%);
+}
+
+/* ──── Shimmer Effect ──── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    oklch(1 0 0 / 0) 0%,
+    oklch(1 0 0 / 0.05) 50%,
+    oklch(1 0 0 / 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ──── Text Gradient ──── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary-300), var(--color-accent-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ──── Number Formatting ──── */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME OVERRIDES
+   Inverts the surface scale so the entire UI flips.
+   All components use surface-* tokens, so they adapt
+   automatically — zero component code changes needed.
+   ═══════════════════════════════════════════════════════ */
+html.light {
+  /* Surface scale: invert from light backgrounds to dark text */
+  --color-surface-950: oklch(0.99 0.005 275);
+  --color-surface-900: oklch(0.97 0.005 275);
+  --color-surface-800: oklch(0.94 0.01 275);
+  --color-surface-700: oklch(0.90 0.01 275);
+  --color-surface-600: oklch(0.82 0.01 275);
+  --color-surface-500: oklch(0.65 0.02 275);
+  --color-surface-400: oklch(0.50 0.02 275);
+  --color-surface-300: oklch(0.40 0.02 275);
+  --color-surface-200: oklch(0.30 0.02 275);
+  --color-surface-100: oklch(0.20 0.02 275);
+  --color-surface-50: oklch(0.13 0.02 275);
+
+  /* Slightly deepen semantic colors for better contrast on white */
+  --color-primary-300: oklch(0.50 0.18 275);
+  --color-primary-400: oklch(0.48 0.20 275);
+  --color-danger-400: oklch(0.55 0.22 20);
+  --color-success-400: oklch(0.52 0.19 155);
+  --color-warning-400: oklch(0.60 0.16 80);
+  --color-accent-400: oklch(0.52 0.18 220);
+}
+
+/* Glassmorphism adjustments for light theme */
+html.light .glass {
+  background: oklch(1 0 0 / 0.65);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid oklch(0 0 0 / 0.06);
+}
+
+html.light .glass-light {
+  background: oklch(1 0 0 / 0.45);
+  backdrop-filter: blur(12px) saturate(1.3);
+  border: 1px solid oklch(0 0 0 / 0.05);
+}
+
+html.light .glass-strong {
+  background: oklch(1 0 0 / 0.8);
+  backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid oklch(0 0 0 / 0.08);
+}
+
+/* Mesh gradient — softer on light */
+html.light .gradient-mesh {
+  background: 
+    radial-gradient(at 20% 20%, oklch(0.55 0.22 275 / 0.06) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, oklch(0.65 0.20 220 / 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, oklch(0.68 0.19 155 / 0.03) 0px, transparent 50%);
+}
+
+/* Shimmer — dark shimmer on light bg */
+html.light .shimmer {
+  background: linear-gradient(
+    90deg,
+    oklch(0 0 0 / 0) 0%,
+    oklch(0 0 0 / 0.03) 50%,
+    oklch(0 0 0 / 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* Text gradient — darker for light bg readability */
+html.light .text-gradient {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-accent-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scrollbar for light */
+html.light ::-webkit-scrollbar-thumb {
+  background: oklch(0.78 0.01 275);
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.68 0.01 275);
+}
+
+/* Pulse glow — softer on light */
+html.light .animate-pulse-glow {
+  animation: pulse-glow-light 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-light {
+  0%, 100% { box-shadow: 0 0 16px oklch(0.55 0.22 275 / 0.15); }
+  50% { box-shadow: 0 0 32px oklch(0.55 0.22 275 / 0.25); }
+}
+
