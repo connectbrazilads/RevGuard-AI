@@ -1,7 +1,7 @@
 # 🛡️ RevGuard AI
 > **Observe. Detect. Recover. — A Plataforma de Inteligência de Receita por IA.**
 
-🔗 **[Acessar a Demo Interativa Aqui](#)** *(Substitua pelo seu link de deploy)*
+🔗 
 
 ---
 
@@ -78,5 +78,5 @@ Um resumo executivo formatado e pronto para o WhatsApp, gerado em um único cliq
 
 ---
 
-Desenvolvido por **[Seu Nome/Contato]**. 
+Desenvolvido por **Diego Cabral**. 
 *Buscando oportunidades e parcerias estratégicas no ecossistema de SaaS B2B.*
