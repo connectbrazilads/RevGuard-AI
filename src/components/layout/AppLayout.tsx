@@ -27,16 +27,16 @@ const pageTitles: Record<string, { title: string; breadcrumb: string[] }> = {
 export default function AppLayout() {
   const location = useLocation();
   const pageInfo = pageTitles[location.pathname] || { title: 'Página', breadcrumb: ['Página'] };
-  const [sidebarWidth] = useState(260); // synced with sidebar default
+  const [collapsed, setCollapsed] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const [showBriefing, setShowBriefing] = useState(false);
 
   return (
     <div className="min-h-screen bg-surface-950">
-      <Sidebar />
+      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
       
       {/* Main content */}
-      <div className="transition-all duration-300" style={{ marginLeft: sidebarWidth }}>
+      <div className="transition-all duration-300" style={{ marginLeft: collapsed ? 72 : 260 }}>
         {/* Header */}
         <header className="sticky top-0 z-30 h-14 border-b border-surface-800/50 bg-surface-950/80 backdrop-blur-xl">
           <div className="flex items-center justify-between h-full px-6">
