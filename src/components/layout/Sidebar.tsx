@@ -11,7 +11,6 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  Zap,
   Users,
   Filter,
   Bot,
